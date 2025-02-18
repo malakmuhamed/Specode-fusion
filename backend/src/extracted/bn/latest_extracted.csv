@@ -1,0 +1,34 @@
+filename,requirement,label
+SRS.pdf,The system will offer to the user paths to his chosen destination.,Functional
+SRS.pdf,"The application must be easy to use and have a simple interface in order to be easy for users to
+interact with.",Functional
+SRS.pdf,"The application will help the user stay safe by trying to make sure he only passes through places
+that are not crowded and by giving him alternative paths or routes to go for when the user tries to
+go for a place.",Functional
+SRS.pdf,The system will offer to the user alternative paths if the path is crowded.,Functional
+SRS.pdf,"4 Maintainability
+Our application is maintainable so the same team can easily maintain the application and get the
+same output, no need for two teams iOS team and Android team to get the required output",Non-Functional
+SRS.pdf,"Results: As a result for this experiment, researchers found that the performance of the Long-short
+term memory network better than Ada boosting, XG boosting , multiplayer perception and Gradi-
+ent boosting",Non-Functional
+SRS.pdf,"Results: After doing some experiments using the QRFC and NV A, it concluded that both methods
+are easily implemented into smartphones and they have the same performance and accuracy, how-
+ever, QRFC took much less time than that required for static sampling (SS), also researchers see
+that in the future, QRFC will be the most important technique for signal sampling",Non-Functional
+SRS.pdf,"2 Performance and Speed
+Performance is not an issue when it comes to our application, it can work perfectly and smoothly
+on any smartphone",Non-Functional
+SRS.pdf,"3 Reliability
+Our application works on real time database, so it will be secure and there is no chance for failure",Non-Functional
+SRS.pdf,"OS-ELM makes use of ELM
+which can provide great generalization performance at a very fast learning speed",Non-Functional
+SRS.pdf,The application,Non-Functional
+SRS.pdf,"5 Portability
+Our application is a ﬂutter application (cross platform application) in which users can install either
+on iOS or Android operating systems",Non-Functional
+SRS.pdf,"Speciﬁc models were tested
+and contrasted based on their capabilities using performance metrics such as CDF curve, MAE,
+RSME, and Euclidean distance error",Non-Functional
+SRS.pdf,"1 Security
+Our system is secure and works on preventing user breaches",Non-Functional

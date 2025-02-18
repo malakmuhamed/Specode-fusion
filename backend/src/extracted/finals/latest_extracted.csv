@@ -1,0 +1,27 @@
+filename,requirement,label
+1739467353289.pdf,"The application shall be built to be easy to maintain and allow ease of addition or removal of
+features.",Functional
+1739467353289.pdf,The application,Non-Functional
+1739467353289.pdf,"1 Performance
+Switching between dimensions shall be smooth and easy without long loading times, while inter-
+actions with objects shall be responsive",Non-Functional
+1739467353289.pdf,"4 Scalability
+The application shall have the ability to extend any future functionality additions without greatly
+affecting the performance",Non-Functional
+1739467353289.pdf,5 Usability,Non-Functional
+1739467353289.pdf,"5 Usability
+• The user interface shall be intuitive and responsive",Non-Functional
+1739467353289.pdf,"In: 2020 3rd International Conference on Computer Applications & Informa-
+tion Security (ICCAIS)",Non-Functional
+1739467353289.pdf,"“Evaluating Performance and Gameplay
+of Virtual Reality Sickness Techniques in a First-Person Shooter Game”",Non-Functional
+1739467353289.pdf,"3 Maintainability
+The application shall be built to be easy to maintain and allow ease of addition or removal of
+features",Non-Functional
+1739467353289.pdf,"2 Reliability
+The game shall be stable and smoothly functional, where it shall not crash while running and
+interrupt the player’s experience",Non-Functional
+1739467353289.pdf,4 Scalability,Non-Functional
+1739467353289.pdf,2 Reliability,Non-Functional
+1739467353289.pdf,3 Maintainability,Non-Functional
+1739467353289.pdf,1 Performance,Non-Functional

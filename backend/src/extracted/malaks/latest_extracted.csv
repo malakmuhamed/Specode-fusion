@@ -1,0 +1,82 @@
+filename,requirement,label
+SRS.pdf,The user shall be able to login using facial recognition.,Functional
+SRS.pdf,"The admin can view the information saved about the users, edit the information
+or delete a user from the application.",Functional
+SRS.pdf,"The user shall be able to hear an identiﬁcation of the color and pattern of an article of cloth
+in the captured image.",Functional
+SRS.pdf,The application will redirect to the dashboard the contains the list of users present in the system.,Functional
+SRS.pdf,"The application should correctly
+detect the objects present in the image and the output from the processing should produce the most
+accurate result.",Functional
+SRS.pdf,The user shall be able to upload image from mobile gallery.,Functional
+SRS.pdf,"The application can be used by any number of
+users and an admin will have access to the application through the admin side.",Functional
+SRS.pdf,"The application shall allow users to use speciﬁc voice commands to access the
+application’s functionalities and have all the produced output be converted to audio to be heard by
+the user.",Functional
+SRS.pdf,The admin can view all the users registered in the system.,Functional
+SRS.pdf,The user shall be able to capture an image with the help of the system.,Functional
+SRS.pdf,The user shall be able to hear an identiﬁcation of the food in the captured image.,Functional
+SRS.pdf,The admin shall be able to login.,Functional
+SRS.pdf,The system should be available at any network and any mobile phone at any time.,Functional
+SRS.pdf,"The application should be highly secure with the information entered when the user register in the
+application.",Functional
+SRS.pdf,"The application shall be easily maintained as the features integrated into it could be upgraded indi-
+vidually without the need to interrupt the overall cycle of the application.",Functional
+SRS.pdf,"The system can also identify
+eleven different colors which are red, orange, yellow, green, cyan, blue, purple, pink, black, grey,
+and white.",Functional
+SRS.pdf,The admin shall be able to view users’ information.,Functional
+SRS.pdf,"The user will be directed to the
+camera where an appropriate image will be taken through the input video stream taken by the
+camera.",Functional
+SRS.pdf,The system may be denied access to camera.,Functional
+SRS.pdf,The system should be accessed across all platforms.,Functional
+SRS.pdf,"The user will use face recognition to login or sign-up to the system and will be able to use pre-
+deﬁned voice commands that control certain features.",Functional
+SRS.pdf,The system must be reliable when performing its operations.,Functional
+SRS.pdf,"The user will have the option to start
+and stop the audio.",Functional
+SRS.pdf,"The user will be directed to the camera where an appropriate image will be
+taken through the input video stream taken by the camera.",Functional
+SRS.pdf,"The user can
+choose what he wants to be recognized as either object, text, or face.",Functional
+SRS.pdf,"The user will be directed to the camera where an appropriate image will be taken then the user will
+hear an audio of text present in the image.",Functional
+SRS.pdf,The user shall be able to hear an the amount of money in the captured image.,Functional
+SRS.pdf,The user shall be able to sign up.,Functional
+SRS.pdf,The admin shall be able to edit users’ information.,Functional
+SRS.pdf,The admin shall be able to remove users from the system.,Functional
+SRS.pdf,"The application shall produce audible output that correctly translates the output of
+the processed image to the user, and be able to correctly catch the audio commands given by the
+user.",Functional
+SRS.pdf,The user shall be able to hear the audio menu.,Functional
+SRS.pdf,The admin shall be able to logout.,Functional
+SRS.pdf,"The user can read text from
+images by the photo to speech feature, Egyptian banknotes could be identiﬁed and the amount of
+money the user carries.",Functional
+SRS.pdf,The user shall be able to log out.,Functional
+SRS.pdf,The system,Non-Functional
+SRS.pdf,"3 Usability
+The system functionalities shall not be hard for the visually impaired to use as the system could be
+easily navigated",Non-Functional
+SRS.pdf,"4 Maintainability
+The application shall be easily maintained as the features integrated into it could be upgraded indi-
+vidually without the need to interrupt the overall cycle of the application",Non-Functional
+SRS.pdf,"7 Availability
+The system should be available at any network and any mobile phone at any time",Non-Functional
+SRS.pdf,"“Analysing the mental model of blind users in mobile
+touch screen devices for usability”",Non-Functional
+SRS.pdf,"5 Portability
+The system should be accessed across all platforms",Non-Functional
+SRS.pdf,"2 Reliability
+The system must be reliable when performing its operations",Non-Functional
+SRS.pdf,The application,Non-Functional
+SRS.pdf,"6 Scailability
+The system should be highly scalable as it should be easily scaled up or down without interrupting
+the overall performance",Non-Functional
+SRS.pdf,"The overall performance
+of the application shall be recorded to allow for improvement of the performance",Non-Functional
+SRS.pdf,"1 Security
+The application should be highly secure with the information entered when the user register in the
+application",Non-Functional

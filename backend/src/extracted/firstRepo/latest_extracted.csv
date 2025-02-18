@@ -1,0 +1,105 @@
+filename,requirement,label
+SRS.pdf,"The system must choose the optimum energy trade when deficit is de-
+tected.",Functional
+SRS.pdf,"The system should provide the user with easy access to the current grid
+state and the historic trading data.",Functional
+SRS.pdf,The system must comply with relevant energy regulations and data privacy laws.,Functional
+SRS.pdf,"The system should set a dynamic price for surplus energy based on grid
+supply and demand.",Functional
+SRS.pdf,The system must tokenize surplus energy into tradable energy tokens.,Functional
+SRS.pdf,"The system should give the user controls over constraints of the automatic
+trading.",Functional
+SRS.pdf,"The system must validate transactions using smart contracts to ensure both
+parties have sufficient funds.",Functional
+SRS.pdf,The system must detect surplus or deficit in a smart meter’s energy supply.,Functional
+SRS.pdf,"The system must log completed transactions on the blockchain as an im-
+mutable record.",Functional
+SRS.pdf,The system will fall back to the national grid to fulfill the demand.,Functional
+SRS.pdf,The system must be efficient with processing.,Functional
+SRS.pdf,The system should consider the environmental impact of energy trading activities.,Functional
+SRS.pdf,"The system must handle multiple parallel queries for energy trade opti-
+mization.",Functional
+SRS.pdf,"The system should initiate energy transfer using a smart contract after
+trade approval.",Functional
+SRS.pdf,"The system should implement a compatible and abstract interface so that
+it can be virtually tested in a simulated environment.",Functional
+SRS.pdf,"The system will also be gating the
+usage of the national grid where the system only allows it when demand cannot be met by the
+smart grid.",Functional
+SRS.pdf,"The system will be listening to inputs of energy generation from the renewable energy source
+of the unit and energy demand from the connected appliances.",Functional
+SRS.pdf,"The system proposed in this paper creates a suitable platform for
+an energy market oriented towards profit rather than grid efficiency",Non-Functional
+SRS.pdf,"The optimization follows the constraints
+defined in table 3:
+Constraint Type DescriptionValue
+Type
+Surplus Availability HardThe chosen prosumer MUST have
+enough surplus to sell",Non-Functional
+SRS.pdf,"Transaction duration is a key feature as it may correlate with the efficiency,
+reliability, and overall effectiveness of the energy exchange process",Non-Functional
+SRS.pdf,"x∈[0,∞]
+Transfer Efficiency SoftBetter transfer efficiency to the grid is
+preferred",Non-Functional
+SRS.pdf,"Objective Function: The goal of the optimization problem is to maximize the objective function
+where the parameters for the objective function are:
+•ais the surplus availability",Non-Functional
+SRS.pdf,"2 Business Applications
+Piclo Flex , owned by Piclo, is an independent marketplace for energy flexibility services, enabling
+system operators (such as National Grid ESO, UKPN and a growing number internationally) to
+source energy from flexible service providers during times of high demand or low supply",Non-Functional
+SRS.pdf,"Getting more users to participate in the market and trade
+energy helps introduce variety and availability in the market as well as more demand",Non-Functional
+SRS.pdf,"3 Record Keeping (Blockchain) Scenario
+Scenario Description
+To ensure transparency and security, all energy trading transactions are recorded on the blockchain",Non-Functional
+SRS.pdf,"Transparent and Secure Transactions: Ensure transparency and security in energy trans-
+actions by recording them on a blockchain, allowing participants to verify and validate each
+trade",Non-Functional
+SRS.pdf,•eis the transfer efficiency,Non-Functional
+SRS.pdf,The system,Non-Functional
+SRS.pdf,"1
+FR-03 The system must record all transactions on the blockchain for trans-
+parency and security",Non-Functional
+SRS.pdf,"x∈Z∗
+Table 3: Constraints of the optimization problem
+Surplus Availability: The amount of energy each meter has available to transfer, ideally, the entire
+amount of energy needed should be fulfilled from a single meter, failing that, the minimum number
+of meters should be used",Non-Functional
+SRS.pdf,"1 Standards Compliance
+The system must adhere to the standard meter’s expected behavior when it comes to inputs and
+outputs to ensure interoperability and compatibility with existing infrastructure",Non-Functional
+SRS.pdf,"15
+Figure 4: Activity Diagram of how the trading process works
+16
+Figure 5: The structure of the system environment with running system instances
+Trades are recorded transparently on the blockchain for security",Non-Functional
+SRS.pdf,"2
+FR-12 The optimization algorithm must consider factors like surplus availability,
+trade surplus, transfer efficiency, transaction duration, transaction quality,
+and market participation",Non-Functional
+SRS.pdf,2 Usability Requirements,Non-Functional
+SRS.pdf,"There is a solution to increase reliability and maximize the utilization of
+renewable energy by automatically trading generated energy between Prosumers on the same
+grid",Non-Functional
+SRS.pdf,"• Communication Interfaces: Compatibility with existing communication interfaces on smart
+meters is crucial for seamless integration",Non-Functional
+SRS.pdf,"1 Security Requirements
+Ensuring the security of the system is paramount",Non-Functional
+SRS.pdf,"3 Record keeping (blockchain)
+To ensure transparency, security, and immutability of transactions within the energy trading system,
+a blockchain technology will be employed",Non-Functional
+SRS.pdf,"Transfer Efficiency: Different factors affect the transfer efficiency between any two meters, such
+as proximity, the state of the electricity lines connecting the meters, and weather conditions",Non-Functional
+SRS.pdf,"This inefficiency hampers the reliability and widespread adoption of renewable energy
+solutions",Non-Functional
+SRS.pdf,"4 Blockchain Validators
+Validators verify transactions, contributing to blockchain security and integrity",Non-Functional
+SRS.pdf,"2 Usability Requirements
+The user interface and overall user experience should meet usability standards",Non-Functional
+SRS.pdf,1 Security Requirements,Non-Functional
+SRS.pdf,"This gives
+plenty of users more options for more accessible renewable energy and better grid efficiency",Non-Functional
+SRS.pdf,"3 Functional Requirement FR-03
+To ensure transparency and security, all energy transactions, including token transfers and trades,
+must be recorded on the blockchain",Non-Functional

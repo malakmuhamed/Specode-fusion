@@ -1,0 +1,105 @@
+filename,requirement,label
+SRS.pdf,The system can collect codes from repositories.,Functional
+SRS.pdf,The system can classify scripts.,Functional
+SRS.pdf,The system can train the model.,Functional
+SRS.pdf,The system can test the generated scripts.,Functional
+SRS.pdf,"6 User Characteristics
+• User should have a good level of knowledge for cyber security",Non-Functional
+SRS.pdf,"Organizations may effectively find and target vulnerabilities thanks to automation powered
+by AI, which guarantees an accurate evaluation of their security posture",Non-Functional
+SRS.pdf,"This highlights the benefits of automating the process, saving time, enhancing the accuracy
+of the results, and enabling penetration testing by security experts through the use of artificial
+intelligence as learned in [8]",Non-Functional
+SRS.pdf,"“Security testing of web applications: A systematic map-
+ping of the literature”",Non-Functional
+SRS.pdf,"For security professionals to communicate easily, modify testing parameters,
+and understand findings, a user-friendly interface",Non-Functional
+SRS.pdf,"• Ensuring efficiency in a range of patterns by developing adaptability for various network
+environments",Non-Functional
+SRS.pdf,"1 Problem Statement
+The issue with penetration testing is that it requires expert performance and takes a growing amount
+of time to complete",Non-Functional
+SRS.pdf,"“Artificial intelligence design research on the cyber security
+penetration testing of power grid enterprises”",Non-Functional
+SRS.pdf,1 Performance,Non-Functional
+SRS.pdf,"2 Business Applications
+AttackForge [5]: An online platform that offers security teams collaboration features by combining
+automated penetration testing and vulnerability scanning",Non-Functional
+SRS.pdf,"2 Detailed Functional Specification
+9
+Table 2:
+Type Value
+Name login and confirmation
+Code ID:1
+Priority High
+Critical To obtain security for authorised people only to able to get scripts
+Description User gives information to prove he is an authorised person to gain access
+Input User Data
+Output Access to the system
+Pre-Condition User is authorised
+Post-Condition User gains access
+Dependency Depends on user being a person of authority
+Risk User is not authorised
+Table 3:
+Type Value
+Name Choosing of vulnerabilities
+Code ID:2
+Priority High
+Critical To obtain the choice from user
+Description User chooses vulnerabilities to be tested on the website
+Input Vulnerabilities chosen
+Output Scripts from the database
+Pre-Condition Chooses from Web vulnerabilities
+Post-Condition Scripts for chosen vulnerabilites are made
+Dependency Depends on the vulnerabilities available
+Risk",Non-Functional
+SRS.pdf,"15
+2
+Abstract
+Penetration testing is the act of a technician with knowledge and experience in network
+security that will simulate a malicious hacker attack as part of a penetration test to assess the
+security of a computer network system",Non-Functional
+SRS.pdf,"• Creating AI algorithms to discover security weaknesses, write attack scripts, and employ
+advanced attack methods",Non-Functional
+SRS.pdf,"1 Definitions, Acronyms, Abbreviations
+14
+Table 7:
+Name Description
+Vulnerabilitiesa software code flaw or bug, system misconfiguration, or some other weakness
+in the website web application or its components and processes
+Scripts written codes that are interpreted and implemented by a compiler
+Penetration Testing an authorized simulated attack performed on a computer system to evaluate its security
+GPT Generative pre-trained transformer, a type of artificial intelligence language model",Non-Functional
+SRS.pdf,"This lowers the price of
+manual testing and makes it possible to perform security assessments more frequently and rapidly
+as mentioned here [1]",Non-Functional
+SRS.pdf,The system,Non-Functional
+SRS.pdf,"1 Performance
+The project should deliver reliable results and scripts with a minimum error as possible",Non-Functional
+SRS.pdf,4 Reliability,Non-Functional
+SRS.pdf,"They
+said to believe that the results of their study would benefit researchers working on web application
+security testing",Non-Functional
+SRS.pdf,"5 Objectives
+By examining vulnerabilities, web application security testing tools, and other related topics, this
+project aims to identify knowledge gaps in web application security testing and fill them",Non-Functional
+SRS.pdf,"Human error, fault-positive scenarios, the vast number
+of tools that required memorization, the inability to obtain accurate penetration testing, the high
+cost, and the need for experts and well-trained security professionals to conduct the process which
+requires a lot of time and training were some of the challenges faced by traditional penetration
+testing",Non-Functional
+SRS.pdf,"4 Reliability
+The project should deliver codes that the user can rely on",Non-Functional
+SRS.pdf,"Figure 1: AttackForge
+4
+OWASP [6]: ZAP is an open-source security tool that offers automated scanners for different
+kinds of security testing and is useful for identifying vulnerabilities in web applications",Non-Functional
+SRS.pdf,"• Responsible testing is ensured by ethical considerations, and an organised cybersecurity
+strategy is encouraged by easy integration with the current security infrastructure",Non-Functional
+SRS.pdf,"It also could be useful for developers who discuss application security while they
+develop web applications as learned from",Non-Functional
+SRS.pdf,• Scalability in order to handle the growth and complexity of organisational infrastructures,Non-Functional
+SRS.pdf,"They say that there is a
+gap in the application of AI in automotive cybersecurity and that the ideal way to test the potential
+of reinforcement learning models in CA V security would be to create a simulation environment to
+assess a few chosen scenarios",Non-Functional
