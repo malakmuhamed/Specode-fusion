@@ -53,27 +53,29 @@ exports.getUserRepositories = async (req, res) => {
 exports.getRepoDetails = async (req, res) => {
   try {
     const { repoId } = req.params;
-    console.log("🔍 Received repoId:", repoId);
-
-    if (!mongoose.Types.ObjectId.isValid(repoId)) {
-      return res.status(400).json({ message: "Invalid repository ID format." });
-    }
+    console.log("🔍 Fetching details for repoId:", repoId);
 
     const repo = await Repo.findById(repoId);
-    if (!repo) return res.status(404).json({ message: "Repository not found." });
+    if (!repo) {
+      console.error("❌ Repository not found:", repoId);
+      return res.status(404).json({ message: "Repository not found." });
+    }
 
-    const extractedReportPath = `http://localhost:5000/extracted/${repo.name}/latest_extracted.csv`;
+    const extractedFilePath = `/extracted/${repo.name}/latest_extracted.csv`;
+    console.log("📂 Extracted File Path Sent to Frontend:", extractedFilePath);
 
     res.status(200).json({
       repo,
-      commits: (repo.srsHistory?.length || 0) + (repo.sourceCodeHistory?.length || 0), // ✅ Fix commit count
-      extractedReport: extractedReportPath,
+      commits: (repo.srsHistory?.length || 0) + (repo.sourceCodeHistory?.length || 0),
+      extractedReport: extractedFilePath,
     });
   } catch (error) {
-    console.error("❌ Error fetching repository details:", error);
+    console.error("❌ Server Error Fetching Repo Details:", error);
     res.status(500).json({ message: "Failed to fetch repository details." });
   }
 };
+
+
 
 // ✅ Request Access to a Repository
 exports.requestAccess = async (req, res) => {
