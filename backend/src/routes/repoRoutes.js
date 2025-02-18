@@ -4,68 +4,28 @@ const {
   getUserRepositories,
   getRepoDetails,
   requestAccess,
-  manageAccess,
+  handleRequest,
   uploadFile,
-  getRepoHistory,
-  addCommitToRepo,
+  getReposWithRequests,
   getAllRepositories,
-  getRepoOwner
-
+  getRepoOwner,
+  getRepoRequests,
+  getRepoHistory
 } = require("../controllers/repoController");
+
+const { getUserById } = require("../controllers/usercontroller"); // ✅ Fixed case sensitivity
 
 const authenticateUser = require("../middleware/authMiddleware");
 const multer = require("multer");
 const path = require("path");
-const Repo = require("../models/repo"); // ✅ Import the Repo model
 
 const router = express.Router();
 
-router.get("/:repoId/history", async (req, res) => {
-  try {
-    const repo = await Repo.findById(req.params.repoId)
-      .populate("srsHistory.user", "username email")
-      .populate("sourceCodeHistory.user", "username email");
+// ✅ Fetch All Requests (Only for Repo Owners)
+router.get("/:repoId/requests", authenticateUser, getRepoRequests);
 
-    if (!repo) {
-      return res.status(404).json({ message: "Repository not found" });
-    }
-
-    res.json({
-      srsHistory: repo.srsHistory,
-      sourceCodeHistory: repo.sourceCodeHistory,
-    });
-  } catch (error) {
-    console.error("Error fetching history:", error);
-    res.status(500).json({ message: "Server error", error });
-  }
-});
-router.get("/all", async (req, res) => {
-  try {
-      const repos = await Repo.find().populate("owner", "username email");
-      res.status(200).json(repos);
-  } catch (error) {
-      console.error("Error fetching all repositories:", error);
-      res.status(500).json({ message: "Failed to fetch repositories." });
-  }
-});
-router.get("/owner/:repoId", async (req, res) => {
-  const repoId = req.params.repoId;
-  console.log("Fetching owner for repoId:", repoId);
-  const repo = await Repo.findById(repoId).populate("owner");
-
-  if (!repo) {
-    return res.status(404).json({ message: "Repository not found" });
-  }
-
-  res.json(repo.owner);
-});
-
-
-// ✅ Ensure uploads are stored in the correct directory
-const upload = multer({
-  dest: path.join(__dirname, "../uploads/"), // ✅ Fixed path
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB max file size
-});
+// ✅ Handle Access Requests (Approve/Reject)
+router.post("/:repoId/handle-request", authenticateUser, handleRequest);
 
 // ✅ Create a Repository
 router.post("/create", authenticateUser, createRepo);
@@ -73,19 +33,25 @@ router.post("/create", authenticateUser, createRepo);
 // ✅ Request Access to a Repository
 router.post("/:repoId/request-access", authenticateUser, requestAccess);
 
-// ✅ Approve/Deny Access (Owner Only)
-router.post("/manage-access", authenticateUser, manageAccess);
-
 // ✅ Upload SRS or Source Code (Only Members)
+const upload = multer({ dest: path.join(__dirname, "../uploads/"), limits: { fileSize: 10 * 1024 * 1024 } });
 router.post("/:repoId/upload", authenticateUser, upload.single("file"), uploadFile);
 
-// ✅ Fetch user's repositories
+// ✅ Fetch User's Repositories
 router.get("/my-repos", authenticateUser, getUserRepositories);
-
-// ✅ Fetch repository details
+router.get("/myrepos", authenticateUser, getReposWithRequests);
+// ✅ Fetch Repository Details
 router.get("/:repoId/details", authenticateUser, getRepoDetails);
+
+// ✅ Fetch All Repositories
 router.get("/all", getAllRepositories);
+
+// ✅ Fetch Repository Owner
 router.get("/owner/:repoId", getRepoOwner);
 
+// ✅ Fetch User Details (NEW ROUTE)
+router.get("/users/:id", getUserById);
+// ✅ Fetch Repository History
+router.get("/:repoId/history", authenticateUser, getRepoHistory);
 
 module.exports = router;

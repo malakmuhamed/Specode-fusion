@@ -254,3 +254,112 @@ exports.getRepoOwner = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+exports.getRepoRequests = async (req, res) => {
+  try {
+    const { repoId } = req.params;
+    const ownerId = req.user.id;
+
+    console.log("🔍 Fetching requests for repo:", repoId);
+    console.log("👤 Authenticated Owner ID:", ownerId);
+
+    // ✅ Populate the "requests" field with username & email
+    const repo = await Repo.findById(repoId).populate("requests", "username email");
+
+    if (!repo) {
+      console.error("❌ Repository not found:", repoId);
+      return res.status(404).json({ message: "Repository not found" });
+    }
+
+    if (repo.owner.toString() !== ownerId) {
+      console.error("❌ Access denied. Owner ID mismatch:", { expected: repo.owner.toString(), found: ownerId });
+      return res.status(403).json({ message: "Access denied. Only the owner can view requests." });
+    }
+
+    console.log("✅ Requests found:", repo.requests);
+    res.status(200).json(repo.requests);
+  } catch (error) {
+    console.error("❌ Error fetching requests:", error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+exports.getReposWithRequests = async (req, res) => {
+  try {
+    console.log("🔍 Request from User ID:", req.user?.id);
+
+    if (!req.user?.id) {
+      return res.status(400).json({ message: "Invalid User ID in Token" });
+    }
+
+    const userId = req.user.id;
+
+    // ✅ Fetch repositories and populate "requests" with user data
+    const repos = await Repo.find({ $or: [{ owner: userId }, { members: userId }] })
+      .populate("requests", "username email"); // Populate username & email of requesters
+
+    console.log("✅ Repositories with populated requests:", repos);
+
+    res.status(200).json(repos);
+  } catch (error) {
+    console.error("❌ Error fetching repositories with requests:", error);
+    res.status(500).json({ message: "Failed to fetch repositories." });
+  }
+};
+
+
+
+exports.handleRequest = async (req, res) => {
+  try {
+    const { repoId } = req.params;
+    const { userId, action } = req.body; // action = "approve" or "reject"
+    const ownerId = req.user.id;
+
+    const repo = await Repo.findById(repoId);
+    if (!repo) {
+      return res.status(404).json({ message: "Repository not found" });
+    }
+
+    if (repo.owner.toString() !== ownerId) {
+      return res.status(403).json({ message: "Only the owner can approve or reject requests" });
+    }
+
+    if (!repo.requests.includes(userId)) {
+      return res.status(400).json({ message: "Request not found" });
+    }
+
+    if (action === "approve") {
+      repo.members.push(userId);
+    }
+    repo.requests = repo.requests.filter((reqUserId) => reqUserId.toString() !== userId);
+
+    await repo.save();
+    res.status(200).json({ message: `User ${action}d successfully` });
+  } catch (error) {
+    console.error("Error handling request:", error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+exports.getRepoHistory = async (req, res) => {
+  try {
+    const { repoId } = req.params;
+    console.log("🔍 Fetching history for repo:", repoId);
+
+    const repo = await Repo.findById(repoId)
+      .populate("srsHistory.user", "username email") // ✅ Populate user details
+      .populate("sourceCodeHistory.user", "username email");
+
+    if (!repo) {
+      console.error("❌ Repository not found:", repoId);
+      return res.status(404).json({ message: "Repository not found" });
+    }
+
+    res.status(200).json({
+      srsHistory: repo.srsHistory || [],
+      sourceCodeHistory: repo.sourceCodeHistory || [],
+    });
+  } catch (error) {
+    console.error("❌ Error fetching history:", error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+

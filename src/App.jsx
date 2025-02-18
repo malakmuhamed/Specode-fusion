@@ -20,6 +20,7 @@ import RepoDetails from "./pages/RepoDetails";
 import RepoHistory from "./pages/Repohistory";
 import Allrepos from "./pages/Allrepos";
 import All from "./pages/All";
+import RequestPage from"./pages/Requestpage";
  // Fixed casing
 
 function App() {
@@ -55,12 +56,22 @@ function App() {
               </>
             } 
           />
+          
             <Route 
             path="/Allrepos" 
             element={
               <>
                 <Navbar />
                 <Allrepos />
+              </>
+            } 
+          />
+             <Route 
+            path="/Requestpage" 
+            element={
+              <>
+                <Navbar />
+                <RequestPage />
               </>
             } 
           />
@@ -128,6 +139,8 @@ function App() {
            <Route path="/RepoDetails" element={<RepoDetails />}/>
            <Route path="/Allrepos" element={<Allrepos />}/>
            <Route path="/All" element={<All />}/>
+           <Route path="/Requestpage" element={<RequestPage />}/>
+
            
         </Routes>
       </main>

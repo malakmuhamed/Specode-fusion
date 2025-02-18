@@ -27,6 +27,8 @@ export default function RepoHistory() {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log("📜 Fetched history data:", data); // ✅ Debugging log
+  
         if (data.srsHistory || data.sourceCodeHistory) {
           const combinedHistory = [...data.srsHistory, ...data.sourceCodeHistory].map((commit) => ({
             ...commit,
@@ -37,8 +39,10 @@ export default function RepoHistory() {
           setHistory([]);
         }
       })
-      .catch((error) => console.error("Error fetching history:", error));
+      .catch((error) => console.error("❌ Error fetching history:", error));
   };
+  
+
 
   return (
     <div className="p-4">
@@ -59,18 +63,19 @@ export default function RepoHistory() {
         <div className="mt-4">
           <h2 className="text-lg font-semibold">History for {selectedRepo}</h2>
           <ul className="border p-2">
-            {history.length > 0 ? (
-              history.map((commit, index) => (
-                <li key={index} className="border-b p-2">
-                  <p><strong>User:</strong> {commit.user?.username || "Unknown"} ({commit.user?.email || "No Email"})</p>
-                  <p><strong>Action:</strong> {commit.action}</p>
-                  <p><strong>File:</strong> {commit.file || "N/A"}</p>
-                  <p><strong>Timestamp:</strong> {commit.timestamp}</p>
-                </li>
-              ))
-            ) : (
-              <p>No history found</p>
-            )}
+          {history.length > 0 ? (
+  history.map((commit, index) => (
+    <li key={index} className="border-b p-2">
+      <p><strong>User:</strong> {commit.user?.username || "Unknown"} ({commit.user?.email || "No Email"})</p>
+      <p><strong>Action:</strong> {commit.action}</p>
+      <p><strong>File:</strong> {commit.file || "N/A"}</p>
+      <p><strong>Timestamp:</strong> {commit.timestamp}</p>
+    </li>
+  ))
+) : (
+  <p>No history found</p>
+)}
+
           </ul>
         </div>
       )}

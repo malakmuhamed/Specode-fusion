@@ -3,7 +3,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
 
-// ✅ User Signup
+
+
+
+
 exports.signup = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -77,7 +80,19 @@ exports.updateProfile = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
-
+// ✅ Fetch a User by ID
+exports.getUserById = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).select("username email");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(user);
+  } catch (error) {
+    console.error("❌ Error fetching user:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
 // ✅ Delete User Account
 exports.deleteProfile = async (req, res) => {
   try {
