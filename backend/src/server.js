@@ -6,6 +6,7 @@ const fs = require("fs");
 const csv = require("csv-parser");
 
 const Repo = require("./models/repo"); // ✅ Import Repo model
+const codeRoutes = require("./routes/codeRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -30,7 +31,7 @@ app.use("/extracted", express.static(extractedDir));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/repos", require("./routes/repoRoutes"));
 app.use("/api/files", require("./routes/fileRoutes"));
-
+app.use("/api", codeRoutes);
 // ✅ Fetch Extracted Requirements for a Repository
 app.get("/api/repos/:repoId/extracted", async (req, res) => {
   const { repoId } = req.params;

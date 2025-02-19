@@ -24,7 +24,7 @@ const UploadSourceCode = () => {
       setError("Please select a file first.");
       return;
     }
-
+    console.log("Uploading file to backend:", file);
     setUploading(true);
     setError(null);
     setSuccessMessage(""); // Clear success message before upload
@@ -33,7 +33,7 @@ const UploadSourceCode = () => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:5000/upload/code", {
+      const response = await fetch("http://localhost:5000/api/upload/code", {
         method: "POST",
         body: formData,
       });

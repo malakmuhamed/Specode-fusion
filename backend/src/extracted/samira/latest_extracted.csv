@@ -1,0 +1,92 @@
+filename,requirement,label
+SRS.pdf,"The system should go through 6 main steps as illustrated in figure1 :
+Figure 6: System Overview
+8
+3.",Functional
+SRS.pdf,"The system should contain the following:
+• The system is designed to help the patient through visuals on a computer screen to perform
+some mental practices.",Functional
+SRS.pdf,The admin shall assign a patient to a doctor for constant supervission.,Functional
+SRS.pdf,"The system should be able to connect to the headset via headset software and then visualize the
+brain signals on the computer.",Functional
+SRS.pdf,"The system shall perform feature extraction techniques to extract Motor imagery signals
+from the preprocessed data.",Functional
+SRS.pdf,The system shall be able to read brain signals acquired from EEG headset.,Functional
+SRS.pdf,The system shall generate a detailed report of every game for each patient.,Functional
+SRS.pdf,"The system should provide certain movements for the patient on a computer screen, to help the
+patient be able to imagine his desired movement.",Functional
+SRS.pdf,The admin shall be able to add/edit/delete/view patients into the system.,Functional
+SRS.pdf,"The system shall provide an easy to understand UI (User Interface) and a satisfactory UX (User
+Experience).",Functional
+SRS.pdf,"The admin shall be able to view the comments posted from the doctors to the patients for
+monitoring.",Functional
+SRS.pdf,The user must have an internet connection to access the system.,Functional
+SRS.pdf,The system shall give a classification result using classification algorithms.,Functional
+SRS.pdf,"The application shall be built to be easy to maintain and allow ease of addition or removal of
+features by following the SOLID Principles (Single Responsibility Principle (SRP), Open/Closed
+Principle, Liskov Substitution Principle (LSP), Interface Segregation Principle (ISP), and Depen-
+dency Inversion Principle (DIP)).",Functional
+SRS.pdf,"The system should
+send motor commands to the Robotic arm, that will be able to make the intended movement of the
+patient.",Functional
+SRS.pdf,The system shall adapt the model when having continues miss classification with a patient.,Functional
+SRS.pdf,The system shall create the game environment for the patients to play.,Functional
+SRS.pdf,"The admin shall be able to add/edit/delete/view doctors into the system and view patients
+assigned to each Doctor.",Functional
+SRS.pdf,"The system shall give a feedback to the robotic arms giving instruction to which arm should
+be moved.",Functional
+SRS.pdf,"The system shall perform some preprocessing techniques on the data acquired from the head-
+set.",Functional
+SRS.pdf,"1 Academic
+Suleman Rasheed and Wajid Mumtaz [2] proposed a BCI-based system that evaluates and com-
+pares the performance of some feature extraction techniques for motor imagery tasks in EEG-based
+4
+brain controlled prosthetics, both within-subject and cross-subject classification",Non-Functional
+SRS.pdf,"Initial assumption: The patient has successfully completed a gaming session and is eager
+to assess their performance",Non-Functional
+SRS.pdf,"3 Scalability
+The application shall have the ability to extend any future functionality additions without greatly
+affecting the performance by applying the Dependency Injection principle leading to loosely cou-
+pled application",Non-Functional
+SRS.pdf,"Regard-
+ing the statistics of their results, all subjects achieved 100% accuracy in reaching their goal due to
+the low activation threshold and in the real-time performance of 3-class trials, the highest achieved
+goal accuracy was 87%",Non-Functional
+SRS.pdf,"2 Hardware Limitations
+• The EEG Hardware number of channels might affect the system performance(Using headsets
+of more or less channels than the international 20-30 placement standard)",Non-Functional
+SRS.pdf,"5 Usability
+The system shall provide an easy to understand UI (User Interface) and a satisfactory UX (User
+Experience)",Non-Functional
+SRS.pdf,The system,Non-Functional
+SRS.pdf,The patient shall be able to view his score that is calculated according to his performance,Non-Functional
+SRS.pdf,"It is used due to its robustness and ability to
+handle high-dimensional data",Non-Functional
+SRS.pdf,"The first six individuals performed much better
+with moving window CSP and PSD based approaches; however, subjects 7 and 8 showed very
+poor performance compared to other algorithms",Non-Functional
+SRS.pdf,"Normal: Post-game, the patient eagerly reviews their performance score, gaining insights
+into their progress and achievements",Non-Functional
+SRS.pdf,"1 Standards Compliance
+• The system must adhere to industry standards, ensuring compatibility and readability",Non-Functional
+SRS.pdf,The application,Non-Functional
+SRS.pdf,1 Reliability,Non-Functional
+SRS.pdf,2 Maintainability,Non-Functional
+SRS.pdf,"They helped in
+solving the issue by comparing the efficiency of deep learning, spatial pattern-based techniques
+(filter bank common spatial patterns and common spatial patterns), and feature extractors such as
+wavelet transform and power spectral density techniques (EEGNet)",Non-Functional
+SRS.pdf,3 Scalability,Non-Functional
+SRS.pdf,"4 Security
+All passwords shall be hashed, admin privileges shall only be accessible from admin accounts, and
+doctor privileges shall only be accessible from doctor accounts",Non-Functional
+SRS.pdf,4 Security,Non-Functional
+SRS.pdf,"2 Maintainability
+The application shall be built to be easy to maintain and allow ease of addition or removal of
+features by following the SOLID Principles (Single Responsibility Principle (SRP), Open/Closed
+Principle, Liskov Substitution Principle (LSP), Interface Segregation Principle (ISP), and Depen-
+dency Inversion Principle (DIP))",Non-Functional
+SRS.pdf,"1 Reliability
+The game session shall be stable and smoothly functional, where it shall not crash while running
+and interrupt the rehabilitation session",Non-Functional
+SRS.pdf,5 Usability,Non-Functional

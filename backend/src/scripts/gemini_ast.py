@@ -7,8 +7,11 @@ import sys
 # Configure Gemini AI API
 genai.configure(api_key="AIzaSyA9wrEDD65p0otguFeE8cAYuJ9lmWOpfoE")
 
-UPLOAD_FOLDER = r"C:\Users\LAP\Desktop\specode-frontend\backend\src\uploads"
-RESULTS_FOLDER = r"C:\Users\LAP\Desktop\specode-frontend\backend\src\results"
+# Get the script's directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
+RESULTS_FOLDER = os.path.join(BASE_DIR, "results")
+
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(RESULTS_FOLDER, exist_ok=True)
 
