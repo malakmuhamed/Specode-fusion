@@ -54,6 +54,7 @@ def extract_zip(zip_path):
     return zip_name, extracted_files
 
 # Language-Specific Parsers
+
 def extract_python_functions(file_path):
     try:
         with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
@@ -99,60 +100,94 @@ def extract_cpp_functions(file_path):
     except Exception as e:
         logging.error(f"Error parsing C++ file {file_path}: {e}")
         return []
+async def analyze_code_async(session, functions, filename):
+    if not functions:
+        logging.warning(f"No functions found in {filename}, skipping analysis.")
+        return {"file": filename, "functionality": "[ERROR] No functions found"}
 
-async def analyze_code_async(session, code, filename):
-    logging.info(f"Analyzing file: {filename}")
+    logging.info(f"Analyzing file: {filename} with {len(functions)} functions")
+
     prompt = f"""
-    Analyze the following code and extract the functionalities it implements.
+    Analyze the following functions from the file `{filename}` and extract their functionalities.
     Provide a structured JSON output with:
     - functionality_name
     - description
     - input_parameters
     - output_values
     - related_methods
-    
-    Code:
-    {code}
+
+    Functions:
+    {functions}
     """
-    retry_attempts = 3
-    for attempt in range(retry_attempts):
-        try:
-            model = genai.GenerativeModel("gemini-1.5-flash")
-            response = await asyncio.to_thread(model.generate_content, prompt)
-            await asyncio.sleep(2)  # Rate limiting to prevent 429 errors
-            return {"file": filename, "functionality": response.text if response else "[ERROR] No response"}
-        except Exception as e:
-            logging.error(f"Gemini API Error for {filename} (Attempt {attempt+1}/{retry_attempts}): {e}")
-            await asyncio.sleep(5)  # Delay before retry
-    return {"file": filename, "functionality": "[ERROR] API request failed after retries"}
+
+    models = ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-2.0-pro-exp"]  # Fastest first
+    retry_attempts = 2
+    delay = 3  # Initial delay
+
+    for model_name in models:
+        for attempt in range(retry_attempts):
+            try:
+                logging.info(f"Using model: {model_name} (Attempt {attempt+1}/{retry_attempts})")
+                model = genai.GenerativeModel(model_name)
+                response = await asyncio.to_thread(model.generate_content, prompt)
+
+                if response and response.text:
+                    return {"file": filename, "functionality": response.text}
+
+                raise Exception(f"Empty response from {model_name}")
+            except Exception as e:
+                logging.error(f"{model_name} Error for {filename} (Attempt {attempt+1}/{retry_attempts}): {e}")
+
+                if "Resource has been exhausted" in str(e):
+                    delay *= 2  # Exponential backoff
+                await asyncio.sleep(delay)
+
+        logging.warning(f"{model_name} failed after {retry_attempts} attempts. Switching to next model...")
+
+    return {"file": filename, "functionality": "[ERROR] All Gemini models failed after retries"}
+
 
 async def process_files(zip_name, file_paths):
     async with aiohttp.ClientSession() as session:
         results = []
-        for file_path in file_paths:
-            ext = os.path.splitext(file_path)[1]
-            extracted_functions = []
-            
-            if ext == ".py":
-                extracted_functions = extract_python_functions(file_path)
-            elif ext == ".java":
-                extracted_functions = extract_java_functions(file_path)
-            elif ext == ".js":
-                extracted_functions = extract_js_functions(file_path)
-            elif ext == ".php":
-                extracted_functions = extract_php_functions(file_path)
-            elif ext == ".cpp":
-                extracted_functions = extract_cpp_functions(file_path)
-            
-            tasks = [analyze_code_async(session, func, os.path.basename(file_path)) for func in extracted_functions]
-            batch_results = await asyncio.gather(*tasks, return_exceptions=True)
-            results.extend(batch_results)
-        
+        semaphore = asyncio.Semaphore(5)  # Limit concurrency to 5 requests at a time
+
+        async def analyze_file(file_path):
+            async with semaphore:
+                ext = os.path.splitext(file_path)[1]
+                extracted_functions = []
+
+                try:
+                    if ext == ".py":
+                        extracted_functions = extract_python_functions(file_path)
+                    elif ext == ".java":
+                        extracted_functions = extract_java_functions(file_path)
+                    elif ext == ".js":
+                        extracted_functions = extract_js_functions(file_path)
+                    elif ext == ".php":
+                        extracted_functions = extract_php_functions(file_path)
+                    elif ext == ".cpp":
+                        extracted_functions = extract_cpp_functions(file_path)
+                except Exception as e:
+                    logging.error(f"Skipping file {file_path} due to extraction error: {e}")
+                    return
+
+                if not extracted_functions:
+                    logging.warning(f"No functions extracted from {file_path}, skipping analysis.")
+                    return
+
+                result = await analyze_code_async(session, extracted_functions, os.path.basename(file_path))
+                results.append(result)
+
+        tasks = [analyze_file(file_path) for file_path in file_paths]
+        await asyncio.gather(*tasks)
+
         output_file = os.path.join(RESULTS_FOLDER, f"{zip_name}.json")
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump(results, f, indent=4)
-        
+
         logging.info(f"✅ Saved results to {output_file}")
+
 
 async def main():
     zip_files = [os.path.join(SOURCE_CODES_FOLDER, f) for f in os.listdir(SOURCE_CODES_FOLDER) if f.endswith(".zip")]
